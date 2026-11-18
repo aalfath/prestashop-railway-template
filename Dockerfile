@@ -20,7 +20,8 @@ RUN chmod 755 /opt/railway/*.sh \
  && mkdir -p /tmp/init-scripts /tmp/post-install-scripts \
  && ln -s /opt/railway/init.sh /tmp/init-scripts/50-railway.sh \
  && ln -s /opt/railway/admin-folder.sh /tmp/post-install-scripts/50-railway-admin.sh \
- && cp /opt/railway/apache-railway.conf /etc/apache2/conf-enabled/railway.conf
+ && cp /opt/railway/apache-railway.conf /etc/apache2/conf-enabled/railway.conf \
+ && a2enmod -q remoteip
 
 EXPOSE 8080
 ENTRYPOINT ["/opt/railway/entrypoint.sh"]
